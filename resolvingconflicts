@@ -1,0 +1,45 @@
+git remote add origin https://github.com/deepsandhu/gitcommands.git
+git push -u origin master
+
+Steps to resolve conflicts:
+Step-1 : Clone the Git Repository into Git Bash from GitLab by using the following command
+                              git clone <<git URL>>
+Step-2 : Checkout to the default branch and update it with remote by running the command,
+                             git pull
+Step-3 : Checkout to source branch and make sure the local source branch is up-to-date with remote by running,
+                             git checkout <<source_branch-name>>
+                              git pull origin <<source_branch_name>>
+Step-4 : Checkout to the target branch where you want to merge the source branch and make sure the local target branch is up-to-date with the remote,
+                              git checkout <<target_branch_name>>
+                               git pull origin <<target_branch_name>>
+Step-5 : Merge the source branch into the target branch by running the command,
+                            git merge <<source_branch_name>>
+Step-6 : Check if there are any conflicts from the merge by running the command,
+                            git status
+Step-7 : Above command will show up the conflicts in red color.
+Step-8 : If we want to store the changes from the source branch run the command,
+                            git checkout --ours .     --->   (for everything on that directory)
+                            git checkout --ours <<file_name>>    --->   (for a particular file)
+Step-9 : If we want to store the changes from the target branch into the source branch then run the command,
+                            git checkout --theirs .     --->   for everything on that directory)
+                            git checkout --theirs <<file_name>>    --->   (for a particular file)
+Step-10 : After resolving the conflicts, commit the changes by running below commands.
+                            git add .
+                            git commit -m "commit message"
+Step-11 : After commit push the changes to the remote repository by running the command,
+                            git push origin <<source_branch>>
+
+Other Commands:
+
+1. Delete a branch 
+  To delete a feature branch on remote repository
+                            git push origin --delete <<branch_name>>
+  To delete a feature branch on local repository
+                            git branch -d <<branch_name>>
+2. Rename a branch
+  To rename your branch on local repository (If you are on the branch you want to rename)
+                            git branch -m <<new_name>>
+  To rename your branch on local repository (If you are on a different branch)
+                           git branch -m <<old_name>> <<new_name>>
+  To delete the old name remote branch (in remote repository) and push the new name local branch (from local repository) 
+                           git push origin <<:old_name>> <<new_name>>
